@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chloeville Schools | Welcome</title>
+    <style>
+        /* CSS RESET & VARIABLES */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        :root {
+            --primary-color: #0b2545; /* Deep Navy */
+            --secondary-color: #134074; /* Classic Blue */
+            --accent-color: #eef4f8; /* Soft Ice Blue */
+            --text-color: #333333;
+            --white: #ffffff;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo {
+            color: var(--white);
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #8da9c4;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(11, 37, 69, 0.85), rgba(19, 64, 116, 0.85)), url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        .cta-btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .cta-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* SECTIONS GENERAL */
+        section {
+            padding: 80px 10%;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* ABOUT SECTION */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .about-text h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        .about-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* PORTALS & QUICK LINKS */
+        .portals {
+            background-color: var(--accent-color);
+            text-align: center;
+        }
+        .portal-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            width: 300px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .card-btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 8px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* NEWS / BLOG SECTION */
+        .news-section {
+            background-color: #ffffff;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .news-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s;
+        }
+        .news-card:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        .news-tag {
+            font-size: 11px;
+            font-weight: bold;
+            color: #e53e3e;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .news-card h4 {
+            color: var(--primary-color);
+            font-size: 16px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .news-link {
+            font-size: 13px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+        }
+        .news-link:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 10%;
+            text-align: center;
+            font-size: 14px;
+        }
+        .footer-content {
+            margin-bottom: 20px;
+        }
+        .footer-content p {
+            margin-bottom: 8px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 30px;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="logo">CHLOEVILLE</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#portal">Portals</a></li>
+                <li><a href="#news">Media Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Nurturing the Leaders of Tomorrow</h1>
+        <p>At Chloeville Schools, we provide a warm, standard, and supportive environment designed to unlock every child's academic and creative potential.</p>
+        <a href="#portal" class="cta-btn">Explore Portals</a>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2 class="section-title">Who We Are</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Excellence & Integrity</h3>
+                <p>Chloeville Schools is dedicated to fostering academic success, moral uprightness, and innovative thinking. Our curriculum balances rigorous class instruction with extracurricular programs to give your child a holistic, world-class education.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&q=80&w=800" alt="Students studying">
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAL SECTION -->
+    <section id="portal" class="portals">
+        <h2 class="section-title">Online Resources</h2>
+        <div class="portal-cards">
+            <!-- Card 1: Payments -->
+            <div class="card">
+                <h3>Fees & Tuition</h3>
+                <p>Pay tuition fees securely online and instantly receive a receipt directly in your inbox.</p>
+                <!-- REPLACE THE '#' BELOW WITH YOUR PAYSTACK PAYMENT PAGE LINK -->
+                <a href="#" class="card-btn">Pay Fees Now</a>
+            </div>
+            <!-- Card 2: Contact -->
+            <div class="card">
+                <h3>Admissions</h3>
+                <p>Ready to join the Chloeville family? Learn more about our seamless admission guidelines.</p>
+                <a href="#contact" class="card-btn">Inquire Here</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS / MEDIA SECTION -->
+    <section id="news" class="news-section">
+        <h2 class="section-title">Chloeville in the News</h2>
+        <div class="news-grid">
+            <!-- Article 1 -->
+            <div class="news-card">
+                <div>
+                    <div class="news-tag">PUNCH Interview</div>
+                    <h4>Holidays Not Periods for Formal Education - Mrs. Victoria Ajibola</h4>
+                </div>
+                <a href="https://punchng.com/holidays-not-periods-for-formal-education-proprietor/" target="_blank" class="news-link">Read full interview →</a>
+            </div>
+            <!-- Article 2 -->
+            <div class="news-card">
+                <div>
+                    <div class="news-tag">PUNCH Interview</div>
+                    <h4>Proprietor Advises Parents on Kids' Protection</h4>
+                </div>
+                <a href="https://punchng.com/proprietor-advises-parents-on-kids-protection/" target="_blank" class="news-link">Read full interview →</a>
+            </div>
+            <!-- Article 3 -->
+            <div class="news-card">
+                <div>
+                    <div class="news-tag">PUNCH Discussion</div>
+                    <h4>Contributory Pension Scheme & Retirees Savings Access</h4>
+                </div>
+                <a href="https://punchng.com/should-retirees-be-allowed-to-access-up-to-50-per-cent-of-their-savings/" target="_blank" class="news-link">Read full article →</a>
+            </div>
+            <!-- Article 4 -->
+            <div class="news-card">
+                <div>
+                    <div class="news-tag">PUNCH Discussion</div>
+                    <h4>Addressing and Curbing the Growing Suicide Rate</h4>
+                </div>
+                <a href="https://punchng.com/what-should-government-do-to-curb-growing-suicide-rate/" target="_blank" class="news-link">Read full article →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & CONTACT -->
+    <footer id="contact">
+        <div class="footer-content">
+            <p style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">Chloeville Schools</p>
+            <p>📍 16 Shaiba Street, Agege, Lagos, Nigeria</p>
+            <p>📧 Email: chloevilleschools12@gmail.com</p>
+            <p>📞 Phone: 08121556876</p>
+        </div>
+        <hr style="border: 0.5px solid #134074; margin-bottom: 20px;">
+        <p>&copy; 2026 Chloeville Schools. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
