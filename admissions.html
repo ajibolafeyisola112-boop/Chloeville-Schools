@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions - Chloeville Schools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header/Navigation */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            background: #fff;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid #fff;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #764ba2;
+            border-color: #764ba2;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Why Choose Chloeville */
+        .why-choose {
+            background: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Admission Process */
+        .process-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-step h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Requirements */
+        .requirements {
+            background: white;
+        }
+
+        .requirements-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .requirement-item {
+            background: #f0f4ff;
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .requirement-item::before {
+            content: "✓";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .requirement-item p {
+            margin: 0;
+        }
+
+        /* School Fees & Enquiry */
+        .fees-enquiry {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .fees-enquiry h2 {
+            color: white;
+        }
+
+        .fees-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .fees-buttons .btn {
+            background: white;
+            color: #667eea;
+            min-width: 250px;
+        }
+
+        /* Application Form */
+        .application-form {
+            background: #f8f9fa;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+
+        .cta-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .fees-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .fees-buttons .btn {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <nav>
+            <div class="logo">🎓 Chloeville Schools</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#why-choose">Why Choose Us</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#form">Apply Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Admissions Open for 2026/2027 Academic Session</h1>
+            <p>Give your child the Chloeville advantage. Enrol today and build a strong foundation for lifelong success.</p>
+            <a href="#form" class="btn">Apply Now</a>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="container">
+        <div class="cta-banner">
+            <p>Join hundreds of parents who have chosen Chloeville School for academic excellence, character development, and a brighter future. Applications are now open.</p>
+        </div>
+    </section>
+
+    <!-- 2. Why Choose Chloeville -->
+    <section class="why-choose" id="why-choose">
+        <div class="container">
+            <h2>Why Choose Chloeville?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>Experienced Teachers</h3>
+                    <p>Our qualified and passionate educators are dedicated to nurturing your child's potential and fostering a love for learning.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏫</div>
+                    <h3>Safe & Caring Environment</h3>
+                    <p>We provide a secure, welcoming space where every child feels valued, respected, and supported to thrive.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Modern Learning Methods</h3>
+                    <p>We combine traditional excellence with innovative teaching techniques to prepare students for the future.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Strong Academic & Moral Excellence</h3>
+                    <p>Strong academic standards coupled with comprehensive moral development create well-rounded, principled students.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Admission Process -->
+    <section class="container" id="process">
+        <h2>Admission Process</h2>
+        <div class="process-container">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Online Application</h3>
+                <p>Complete the online application form with your child's details and preferences.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Placement Assessment</h3>
+                <p>Schedule a placement assessment to evaluate your child's academic level (if applicable).</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Submit Documents</h3>
+                <p>Provide all required documents to complete your application package.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Admission Offer</h3>
+                <p>Receive your admission offer and join the Chloeville family!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Requirements -->
+    <section class="requirements">
+        <div class="container">
+            <h2>Requirements</h2>
+            <div class="requirements-list">
+                <div class="requirement-item">
+                    <p><strong>Passport Photograph</strong><br>Recent passport-sized photo (4x6 cm)</p>
+                </div>
+                <div class="requirement-item">
+                    <p><strong>Birth Certificate</strong><br>Original or certified copy</p>
+                </div>
+                <div class="requirement-item">
+                    <p><strong>Previous School Report</strong><br>Latest report card (if transferring)</p>
+                </div>
+                <div class="requirement-item">
+                    <p><strong>Immunization Record</strong><br>Proof of vaccinations (if required)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. School Fees & Enquiry -->
+    <section class="fees-enquiry">
+        <div class="container">
+            <h2>School Fees & Enquiry</h2>
+            <p style="margin-top: 1rem; font-size: 1.1rem;">Have questions? We're here to help!</p>
+            <div class="fees-buttons">
+                <a href="#" class="btn">Request Current Fee Schedule</a>
+                <a href="mailto:admissions@chloeville.edu" class="btn">Contact Admissions Office</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Online Application Form -->
+    <section class="application-form" id="form">
+        <div class="container">
+            <h2>Online Application Form</h2>
+            <div class="form-container">
+                <form id="admissionForm">
+                    <div class="form-group">
+                        <label for="childName">Child's Name *</label>
+                        <input type="text" id="childName" name="childName" required placeholder="Enter your child's full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="parentName">Parent's Name *</label>
+                        <input type="text" id="parentName" name="parentName" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="classApplying">Class Applying For *</label>
+                        <select id="classApplying" name="classApplying" required>
+                            <option value="">Select a class</option>
+                            <option value="nursery1">Nursery 1</option>
+                            <option value="nursery2">Nursery 2</option>
+                            <option value="nursery3">Nursery 3</option>
+                            <option value="kg1">Kindergarten 1</option>
+                            <option value="kg2">Kindergarten 2</option>
+                            <option value="primary1">Primary 1</option>
+                            <option value="primary2">Primary 2</option>
+                            <option value="primary3">Primary 3</option>
+                            <option value="primary4">Primary 4</option>
+                            <option value="primary5">Primary 5</option>
+                            <option value="primary6">Primary 6</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Additional Information</label>
+                        <textarea id="message" name="message" placeholder="Any additional information you'd like to share"></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Chloeville Schools. All rights reserved.</p>
+        <p>Building bright futures, one student at a time.</p>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                childName: document.getElementById('childName').value,
+                parentName: document.getElementById('parentName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                classApplying: document.getElementById('classApplying').value,
+                message: document.getElementById('message').value
+            };
+
+            // Here you would typically send this data to a server
+            console.log('Application submitted:', formData);
+            
+            // Show success message
+            alert('Thank you for your application! We will contact you shortly at ' + formData.email);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
