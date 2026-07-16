@@ -37,8 +37,33 @@
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.8rem;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
             font-weight: bold;
         }
 
@@ -420,9 +445,14 @@
     <!-- Header/Navigation -->
     <header>
         <nav>
-            <div class="logo">🎓 Chloeville Schools</div>
+            <a href="index.html" class="logo-container">
+                <div class="logo-img">
+                    <img src="images/chloeville-logo.png" alt="Chloeville Schools Logo">
+                </div>
+                <div class="logo-text">🎓 Chloeville Schools</div>
+            </a>
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="#why-choose">Why Choose Us</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#form">Apply Now</a></li>
